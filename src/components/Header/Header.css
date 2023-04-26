@@ -16,3 +16,9 @@ nav.header a{
 nav.header a:hover{
     color: orange;
 }
+.span{
+    padding: 0 20px;
+}
+.btn-span{
+    margin-left: 20px;
+}
