@@ -1,14 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './Login.css'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope ,faEyeSlash,faEye} from '@fortawesome/free-solid-svg-icons'
 import { AuthContext } from '../Provider/AuthProvider';
+
 
 
 const Login = () => {
     
     const {userSignIn} = useContext(AuthContext)
+
+    const [show,setShow] = useState(true);
 
     const navigate = useNavigate();
     const location = useLocation()
@@ -46,9 +49,14 @@ const Login = () => {
                     <input type="email" required name='email' />
                 </div>
 
-                <div>
+                <div className='password'>
                     <label htmlFor="">Password</label> <br />
-                    <input type="password" required name='pass' />
+                    <input type={show ? 'text' : 'password'} required name='pass' />
+                    <span className='pass-icon' onClick={() => setShow(!show)}>
+                        {
+                            show ? <span> <FontAwesomeIcon icon={faEyeSlash}></FontAwesomeIcon>  </span>: <span> <FontAwesomeIcon icon={faEye} /> </span>
+                        }
+                    </span>
                 </div>
 
                 <div>
@@ -71,3 +79,4 @@ const Login = () => {
 };
 
 export default Login;
+
